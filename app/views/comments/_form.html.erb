@@ -1,1 +1,9 @@
-<form action="<%= user_comments_url %>">
+<form action="<%= comments_url %>" method="POST">
+  <label for="Comment">Comment</label>
+  <textarea id="Comment" name="comment[body]"></textarea>
+  <input type="hidden"
+    name="comment[commentable_type]" value="<%= subject.class %>">
+  <input type="hidden"
+    name="comment[commentable_id]" value="<%= subject.id %>">
+  <button>Add Comment</button>
+</form>

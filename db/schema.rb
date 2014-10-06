@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006164356) do
+ActiveRecord::Schema.define(version: 20141006215906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: true do |t|
+    t.text     "body",             null: false
+    t.integer  "author_id",        null: false
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "goal_comments", force: true do |t|
+    t.text     "body",       null: false
+    t.integer  "subject_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "goals", force: true do |t|
     t.string   "title",                        null: false
@@ -28,6 +45,14 @@ ActiveRecord::Schema.define(version: 20141006164356) do
 
   add_index "goals", ["user_id", "title"], name: "index_goals_on_user_id_and_title", using: :btree
   add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
+
+  create_table "user_comments", force: true do |t|
+    t.text     "body",       null: false
+    t.integer  "subject_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "username",        null: false

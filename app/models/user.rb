@@ -1,7 +1,16 @@
 class User < ActiveRecord::Base
+  include Commentable
+
   validates :username, :password_digest, :session_token, presence: true
 
   has_many :goals, inverse_of: :user, dependent: :destroy
+
+  has_many(
+    :authored_comments,
+    class_name: "Comment",
+    foreign_key: :author_id,
+    inverse_of: :author
+  )
 
   after_initialize :ensure_session_token
 

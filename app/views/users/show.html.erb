@@ -6,3 +6,8 @@
       <%= goal.private_goal ? "Private" : "Public" %><br>
   <% end %>
 </p>
+
+<%= render "comments/form", subject: @user %><br>
+<% @user.comments.try(:each) do |comment| %>
+  <%= comment.body %>
+<% end %>

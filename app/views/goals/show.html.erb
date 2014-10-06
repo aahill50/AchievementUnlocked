@@ -12,3 +12,11 @@
     <button>Delete Goal</button>
   </form>
 <% end %>
+
+<br>
+<%= render "comments/form", subject: @goal %>
+<br>
+
+<% @goal.comments.try(:each) do |comment| %>
+  <%= comment.body %>
+<% end %>
