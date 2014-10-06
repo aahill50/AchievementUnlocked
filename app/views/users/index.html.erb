@@ -1,0 +1,6 @@
+<h1>Welcome</h1>
+<p>
+  <% User.all.each do |user| %>
+    <%= user.username %><br>
+  <% end %>
+</p>

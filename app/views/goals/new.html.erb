@@ -1,0 +1,11 @@
+<h1>Create a Goal</h1>
+
+<form action="<%= user_goals_url(current_user) %>" method="POST">
+  <label for="goal_title">Title</label>
+  <input type="text" id="goal_title" name="goal[title]">
+
+  <label for="goal_description">Description</label>
+  <textarea id="goal_description" name="goal[description]"></textarea>
+
+  <button>Create Goal</button>
+</form>
