@@ -9,5 +9,8 @@ class CreateGoals < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :goals, :user_id
+    add_index :goals, [:user_id, :title]
   end
 end

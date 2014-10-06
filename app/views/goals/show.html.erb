@@ -1,0 +1,14 @@
+<h1><%= @goal.title %><%= "- COMPLETE!" if @goal.completed %></h1>
+<p>
+  <%= @goal.description %>
+</p>
+<%= @goal.private_goal ? "Private" : "Public" %><br>
+<% if current_user.id == @goal.user_id %>
+<p>
+  <a href="<%= edit_goal_url(@goal) %>">Edit Goal</a><br>
+</p>
+  <form action="<%= goal_url(@goal) %>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Delete Goal</button>
+  </form>
+<% end %>

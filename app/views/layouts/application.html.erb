@@ -10,7 +10,14 @@
     <input type="hidden" name="_method" value="DELETE">
     <button>Log out</button>
   </form>
+  <%= current_user.username %>
 <% end %>
+
+<% flash[:errors].try(:each) do |error| %>
+  <%= error %><br>
+<% end %>
+
+
 <%= yield %>
 
 </body>

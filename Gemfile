@@ -45,6 +45,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'launchy'
   gem 'rspec-rails'
 end
 
@@ -56,6 +57,7 @@ end
 
 group :development do
   # Run 'annotate' in Terminal to add helpful comments to models.
+
   gem 'annotate'
   # These two give you a great error handling page.
   # But make sure to never use them in production!

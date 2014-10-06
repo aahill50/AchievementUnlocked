@@ -1,1 +1,8 @@
 <h1>Welcome <%= @user.username %></h1>
+<p>
+  <% @user.goals.try(:each) do |goal| %>
+    <% next if current_user.id != goal.user_id && goal.private_goal %>
+      <a href="<%= goal_url(goal) %>"><%= goal.title %></a>
+      <%= goal.private_goal ? "Private" : "Public" %><br>
+  <% end %>
+</p>

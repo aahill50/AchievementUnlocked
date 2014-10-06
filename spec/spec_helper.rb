@@ -85,11 +85,20 @@ RSpec.configure do |config|
 end
 
 
-def create_and_login_one_user
-  user = User.create(username: "foo", password: "password")
+def create_user(username, password)
+  User.create(username: username, password: password)
+end
+
+def login_user(username, password)
   visit new_session_url
-  fill_in 'username', with: "foo"
-  fill_in 'password', with: "password"
+  fill_in 'username', with: username
+  fill_in 'password', with: password
   click_on "Log in"
-  user
+end
+
+def create_goal(user, title, description)
+  visit new_user_goal_url(user)
+  fill_in "Title", :with => title
+  fill_in "Description", :with => description
+  click_on "Create Goal"
 end
